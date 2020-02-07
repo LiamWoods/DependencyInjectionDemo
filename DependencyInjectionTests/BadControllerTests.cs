@@ -1,10 +1,7 @@
-using System;
 using System.Threading.Tasks;
 using DependencyInjectionDemo.NoInjection;
 using DependencyInjectionDemo.Utils;
-using DependencyInjectionDemo.Utils.FactoryItems;
 using Microsoft.AspNetCore.Mvc;
-using NSubstitute;
 using Xunit;
 
 namespace DependencyInjectionTests

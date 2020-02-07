@@ -3,7 +3,6 @@ using NSubstitute;
 using SimpleInjector;
 using SimpleInjectorDemo;
 using SimpleInjectorDemo.Controllers;
-using System;
 using Xunit;
 
 namespace SimpleInjectorTests
