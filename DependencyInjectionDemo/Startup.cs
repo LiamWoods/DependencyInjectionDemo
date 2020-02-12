@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using DependencyInjectionDemo.InheritanceOverFactory;
 using DependencyInjectionDemo.Utils.FactoryItems;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -42,6 +43,12 @@ namespace DependencyInjectionDemo
                 client.BaseAddress = new Uri("http://cakes.com/api/fresh/");
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "TOKEN");
             });
+
+            services.Configure<OldConfig>(options => Configuration.GetSection("ExternalConnections:OldConfiguration").Bind(options));
+            services.Configure<NewConfig>(options => Configuration.GetSection("ExternalConnections:NewConfiguration").Bind(options));
+
+            services.AddSingleton<IRepo<OldConfig>, OldRepo>();
+            services.AddSingleton<IRepo<NewConfig>, NewRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
